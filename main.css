@@ -1,0 +1,12 @@
+.navbar-default {
+	background: linear-gradient(45deg, #356aa0 0%,#030033 100%);
+    /*background-color: #0f006f;*/
+    border-color: #030033;
+}
+
+.glyphicon-leaf{
+color:#780000;
+-webkit-animation-duration: 8s;
+  -webkit-animation-iteration-count: infinite;
+}
+
