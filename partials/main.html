@@ -5,7 +5,7 @@
 		</select>
 	<label>Search by name</label>
 	<input ng-model="query" name='find-tea'>
-	<button ng-click='checkout()' class='btn btn-danger pull-right'>Checkout | Bag:{{count}}</button>
+	<button ng-click='checkout()' class='btn btn-danger pull-right'>Checkout | Bag: <span ng-show='count === 0 '> Empty!</span><span ng-show='count !== 0'>{{count}}</span></button>
 
 	<table class="table table-bordered">
 	<th>Tea</th>
@@ -29,7 +29,29 @@
 					<li>{{tea}}</li>
 				</ul>
 				</p>
-				<h2>{{listCart()}}</h2>
-			</td>	
-		</tr>
+				<caffeine caffeinemg="tea.caffeineScale" id="tea._id">
+				<section class="content">
+  <div class="box gauge--1">
+    <div class="mask">
+    	<div class="semi-circle"></div>
+    	<div class="semi-circle--mask"></div>
+    </div>
+  </div>
+    
+    <div class="box gauge--2">
+      <div class="mask">
+        <div class="semi-circle"></div>
+        <div class="semi-circle--mask"></div>
+      </div>
+  </div>
+      
+      <div class="box gauge--3">
+        <div class="mask">
+          <div class="semi-circle"></div>
+          <div class="semi-circle--mask"></div>
+        </div>
+      </div>
+</section></caffeine>
+				</td>	
+			</tr>
 	</table>

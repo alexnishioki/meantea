@@ -2,25 +2,28 @@
 <h1 class='pull-left'>My Shopping Bag</h1>
 <h1 ng-forEach class='pull-right'>Order Total: {{allTotal() | currency}}</h1>
 <table class=' table table-bordered'>
-<th>Products</th>
-<th>Quauntity</th>
-<th>Sub-total</th>
-<th></th>
-<tr ng-repeat='input in listCart() track by $index'>
-	<td><h2>{{input.tea.name}}</h2>
-	<img ng-src='{{input.tea.imageUrl}}'>
-	<h5>Caffeine Scale: {{input.tea.caffeineScale}}</h5>
-	<h5>Ingredients: {{input.tea.ingredients}}</h5>
-	<h5>Ratings: {{input.tea.rating}}</h5>
-	</td>
-	<td>{{input.total}}</td>
-	<td>{{(input.tea.price * input.total)/100 | currency}}</td>
-	<td>
-		<button ng-click='' id='remove' class='btn btn-danger'>Remove</button>
-		<button ng-click='' id='edit' class='btn btn-warning'>Edit</button>	
-	</td>
-</tr>
-</table>
+	<th>Products</th>
+	<th>Quantity</th>
+	<th>Sub-total</th>
+	<th></th>
+	<tr ng-repeat='input in listCart() track by $index'>
+		<td><h2>{{input.tea.name}}</h2>
+			<img ng-src='{{input.tea.imageUrl}}'>
+			<h5>Caffeine Scale: {{input.tea.caffeineScale}}</h5>
+			<h5>Ingredients: {{input.tea.ingredients}}</h5>
+			<h5>Ratings: {{input.tea.rating}}</h5>
+		</td>
+		<td>
+			<input ng-model='input.total' ng-show='show'><span ng-show='!show'>{{input.total}}</span>
+		</td>
+		<td>{{(input.tea.price * input.total)/100 | currency}}</td>
+		<td>
+			<button ng-click="remove(input.tea._id)" id='remove' class='btn btn-danger'>Remove
+			</button>
+			<button ng-click='show = !show' id='edit' class='btn btn-warning'>Edit</button>	
+		</td>
+	</tr>
+	</table>
 
 
 

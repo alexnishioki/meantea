@@ -58,8 +58,6 @@ app.controller('ControllerOne',function($scope,$http,$window,pages,cart) {
  		$scope.tea = res.data;
 
  		pages.add($scope.tea)
- 		//console.log(pages);
- 		//console.log($scope.list())
  })
  	
 $scope.count = 0
@@ -72,7 +70,6 @@ $scope.addToCart = function(tea,total) {
 	$scope.basket.push(total)
 			$scope.count = $scope.count+1
 			cart.addCart($scope.basket)
-			//console.log($scope.listCart())
 	}
 
 
@@ -89,14 +86,25 @@ app.controller('ControllerTwo',function($scope,$http,$window,pages,cart) {
 	$scope.addCart = cart.addCart
 	$scope.list = pages.list
 	$scope.add = pages.add
-	
+
 	$scope.allTotal = function() {
 		var totalCount = 0
 		for(var i = 0; i < $scope.listCart().length; i++) {
 		totalCount += (($scope.listCart()[i].tea.price * $scope.listCart()[i].total)/100)
+		// console.log($scope.listCart()[i].total)
 		}
 		return totalCount
-	}	
+	}
+
+	$scope.remove = function(item) {
+	for(var i = 0; i < $scope.listCart().length; i++) {
+
+	var cart = $scope.listCart()[i].tea._id
+		if(cart === item){
+		$scope.listCart().splice(i,1)
+		}
+	}		
+}
 
 })
 
