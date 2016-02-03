@@ -1,7 +1,8 @@
+
 	<label>Search by category:</label>
 	<select ng-model='queryTwo'>
 		<option></option>
-		<option ng-repeat='input in tea'>{{input.categories[0]}}</option>
+		<option ng-repeat='input in category'>{{input}}</option>
 		</select>
 	<label>Search by name</label>
 	<input ng-model="query" name='find-tea'>
@@ -11,47 +12,38 @@
 	<th>Tea</th>
 	<th>Information</th>
 		<tr ng-repeat='input in tea |  filter:query | filter:queryTwo'>
-			<td><img ng-src='{{input.imageUrl}}'></td>
+			<td><img class='hvr-float' ng-src='{{input.imageUrl}}'></td>
 			<td>
 				<h2>{{input.name}}
-					<button ng-click='addToCart(input,quantity)' class='btn btn-warning pull-right'>Add to Bag</button>
+					<button  ng-click='addToCart(input,quantity)' class='btn btn-warning pull-right'>Add to Bag</button>
 					<select ng-model='quantity' class='pull-right'>
 					<option  ng-repeat= 'num in optionNum'>{{num}}</option>
 					</select>
 				</h2>		
-				<h5>Price: <strong></strong>{{input.price | currencyFormat}}</h5>
-				<h5>Caffeine Scale: <strong></strong>{{input.caffeineScale}}</h5>
-				<h5>Ingredients: <strong></strong>{{input.ingredients}}</h5>
-				<h5>Rating: <strong></strong>{{input.rating}}</h5>
-				<h5>In Stock: <strong></strong>{{input.inStock | falseFormat}}</h5>
-				<h5>Categories:</h5>
+				<h5><strong>Price: </strong>{{input.price | currencyFormat}}</h5>
+				<h5><strong>Caffeine Scale: </strong>{{input.caffeineScale}}</h5>
+				<h5><strong>Ingredients: </strong>{{input.ingredients}}</h5>
+				<h5><strong>Rating: </strong>{{input.rating}}</h5>
+				<h5><strong>In Stock: </strong>{{input.inStock | falseFormat}}</h5>
+				<h5><strong>Categories: </strong></h5>
 				<ul ng-repeat='tea in input.categories'>
-					<li>{{tea}}</li>
+					<li><h5>{{tea}}</h5></li>
 				</ul>
 				</p>
-				<caffeine caffeinemg="tea.caffeineScale" id="tea._id">
-				<section class="content">
-  <div class="box gauge--1">
-    <div class="mask">
-    	<div class="semi-circle"></div>
-    	<div class="semi-circle--mask"></div>
-    </div>
-  </div>
-    
-    <div class="box gauge--2">
-      <div class="mask">
-        <div class="semi-circle"></div>
-        <div class="semi-circle--mask"></div>
-      </div>
-  </div>
-      
-      <div class="box gauge--3">
-        <div class="mask">
-          <div class="semi-circle"></div>
-          <div class="semi-circle--mask"></div>
-        </div>
-      </div>
-</section></caffeine>
-				</td>	
-			</tr>
-	</table>
+					
+				<p><div ng-show='showTea = !showtea' id="tea._id" class='meter pull-right hvr-float'>
+				<h5>Caffeine</h5>
+				<p>mg/serving: {{input.caffeineScale}}</p>
+				<p>
+				<span ng-show='showTea'><span>Rating: {{setRate(input)}}</span></span>
+				</p>
+				<section class="content hvr-grow-rotate">
+			      <div class="box gauge--3">
+			        <div class="mask">
+			          <div class="semi-circle"></div>
+			          <div class="semi-circle--mask"></div>
+			        </div>
+			      </div>
+			</section></div></p>
+		</td>	
+	</tr>
