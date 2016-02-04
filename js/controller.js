@@ -89,9 +89,13 @@ $scope.addToCart = function(tea,total) {
 	$scope.listCart = cart.listCart
 	$scope.addCart = cart.addCart
 	total = {total,tea}
+	if(total.total===undefined) {
+		total.total===1
+	}
 	$scope.basket.push(total)
 			$scope.count = $scope.count+1
 			cart.addCart($scope.basket)
+			console.log(total.total)
 
 	}
 

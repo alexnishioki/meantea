@@ -20,7 +20,7 @@
 					<option  ng-repeat= 'num in optionNum'>{{num}}</option>
 					</select>
 				</h2>		
-				<h5><strong>Price: </strong>{{input.price | currencyFormat}}</h5>
+				<h5><strong>Price: </strong>{{input.price/100 | currency}}</h5>
 				<h5><strong>Caffeine Scale: </strong>{{input.caffeineScale}}</h5>
 				<h5><strong>Ingredients: </strong>{{input.ingredients}}</h5>
 				<h5><strong>Rating: </strong>{{input.rating}}</h5>

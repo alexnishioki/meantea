@@ -14,7 +14,7 @@
 			<h5>Ratings: {{input.tea.rating}}</h5>
 		</td>
 		<td>
-			<input ng-model='input.total' ng-show='show'><span ng-show='!show'>{{input.total}}</span>
+			<input ng-model='input.total' ng-show='show'><span ng-show='!show'><span>{{input.total}}</span><span ng-if='input.total == undefined'>1</span>
 		</td>
 		<td>{{(input.tea.price * input.total)/100 | currency}}</td>
 		<td>
