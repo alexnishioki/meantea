@@ -11,6 +11,13 @@ color:#780000;
   -webkit-animation-iteration-count: infinite;
 }
 
+.glyphicon-shopping-cart{
+color:  #C8C8C8 ;
+-webkit-animation-delay: 1s;
+-webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+}
+
 .nav.navbar-nav li a{
 	color:white;
 }
@@ -20,7 +27,6 @@ color:#780000;
   opacity:0;
 }
 
-/* The finishing CSS styles for the enter animation */
 .fade.ng-enter.ng-enter-active {
   opacity:1;
 }

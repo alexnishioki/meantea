@@ -6,7 +6,7 @@
 		</select>
 	<label>Search by name</label>
 	<input ng-model="query" name='find-tea'>
-	<button ng-click='checkout()' class='btn btn-danger pull-right'>Checkout | Bag: <span ng-show='count === 0 '> Empty!</span><span ng-show='count !== 0'>{{count}}</span></button>
+	<button ng-click='checkout()' class='btn btn-danger pull-right hvr-float'>Checkout | Bag: <span ng-show='count === 0 '> Empty!</span><span ng-show='count !== 0'>{{count}}</span></button>
 
 	<table class="table table-bordered">
 	<th>Tea</th>
@@ -15,9 +15,9 @@
 			<td><img class='hvr-float' ng-src='{{input.imageUrl}}'></td>
 			<td>
 				<h2>{{input.name}}
-					<button  ng-click='addToCart(input,quantity)' class='btn btn-warning pull-right'>Add to Bag</button>
+					<button ng-click='addToCart(input,quantity)' class='btn btn-warning pull-right hvr-float'>Add to Bag</button>
 					<select ng-model='quantity' class='pull-right'>
-					<option  ng-repeat= 'num in optionNum'>{{num}}</option>
+					<option ng-repeat= 'num in optionNum'>{{num}}</option>
 					</select>
 				</h2>		
 				<h5><strong>Price: </strong>{{input.price/100 | currency}}</h5>

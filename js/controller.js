@@ -31,14 +31,6 @@ app.factory('cart',function() {
 	return cartServiceInstance
 })
 
-app.filter('currencyFormat',function() {
-	return function(val) {
-		val = val.toString().replace('.','').split('');
- 		var removed = val.splice(2,0,'.').join('');
-			return '$' + val.join('');
-	}
-})
-
 app.filter('falseFormat',function() {
  return function() {
  	if(true) {
@@ -48,6 +40,7 @@ app.filter('falseFormat',function() {
   }
 
 })
+
 
 
 app.controller('ControllerOne',function($scope,$http,$window,pages,cart) {
@@ -78,26 +71,30 @@ app.controller('ControllerOne',function($scope,$http,$window,pages,cart) {
  		}
  	})		
 	
- 	
- 	
-
+ 	$scope.category = ['spring','warm','winter','lucid','hot','dry','summer','awesome','cold','dark']
 
 $scope.count = 0
+
 $scope.optionNum = [2,3,4,5,6,7,8,9,10];
+$scope.singleBasket = []
 $scope.basket = []
-$scope.addToCart = function(tea,total) {
+$scope.addToCart = function(tea,total) {	
 	$scope.listCart = cart.listCart
 	$scope.addCart = cart.addCart
-	total = {total,tea}
-	if(total.total===undefined) {
-		total.total===1
-	}
-	$scope.basket.push(total)
-			$scope.count = $scope.count+1
-			cart.addCart($scope.basket)
-			console.log(total.total)
+	$scope.single = {total:1,tea}
+	total = {total,tea}	
+		if (total.total === undefined) {
+			$scope.basket.push($scope.single)
 
-	}
+	  } if (total.total !== undefined) {
+			$scope.basket.push(total)
+	  }
+		$scope.count = $scope.count+1
+		cart.addCart($scope.basket)		
+}	
+		
+
+
 
 $scope.rating = ['low','medium','high','very high!']
 
@@ -135,7 +132,6 @@ app.controller('ControllerTwo',function($scope,$http,$window,pages,cart) {
 }
 
 
-$scope.category = ['spring','warm','winter','lucid','hot','dry','summer','awesome','cold','dark']
 
 
 })
