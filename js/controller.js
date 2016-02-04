@@ -41,14 +41,13 @@ app.filter('falseFormat',function() {
 
 })
 
-
-
 app.controller('ControllerOne',function($scope,$http,$window,pages,cart) {
-	$scope.list = pages.list
-	$scope.add = pages.add
-	$scope.rateList = []
-	$scope.viewRate = []
- $http.get('data.json')
+$scope.list = pages.list
+$scope.add = pages.add
+$scope.rateList = []
+$scope.viewRate = []
+ 	
+ 	$http.get('data.json')
  	.then(function(res) {
  		$scope.tea = res.data;
  		pages.add($scope.tea)
@@ -67,17 +66,16 @@ app.controller('ControllerOne',function($scope,$http,$window,pages,cart) {
  				} else if(input.rating === 4) {
  					name += 'very high!'
  				}
- 			return name
+ 					return name
  		}
- 	})		
+ })		
 	
- 	$scope.category = ['spring','warm','winter','lucid','hot','dry','summer','awesome','cold','dark']
-
+$scope.category = ['spring','warm','winter','lucid','hot','dry','summer','awesome','cold','dark']
 $scope.count = 0
-
 $scope.optionNum = [2,3,4,5,6,7,8,9,10];
 $scope.singleBasket = []
 $scope.basket = []
+
 $scope.addToCart = function(tea,total) {	
 	$scope.listCart = cart.listCart
 	$scope.addCart = cart.addCart
@@ -89,8 +87,8 @@ $scope.addToCart = function(tea,total) {
 	  } if (total.total !== undefined) {
 			$scope.basket.push(total)
 	  }
-		$scope.count = $scope.count+1
-		cart.addCart($scope.basket)		
+			$scope.count = $scope.count+1
+			cart.addCart($scope.basket)		
 }	
 		
 
@@ -98,41 +96,34 @@ $scope.addToCart = function(tea,total) {
 
 $scope.rating = ['low','medium','high','very high!']
 
-
- $scope.checkout = function() {
- 	$window.location = '#/checkout'
-  }
+$scope.checkout = function() {
+ 		$window.location = '#/checkout'
+	}
 
 })
 
 app.controller('ControllerTwo',function($scope,$http,$window,pages,cart) {
-	$scope.listCart = cart.listCart
-	$scope.addCart = cart.addCart
-	$scope.list = pages.list
-	$scope.add = pages.add
-
-	$scope.allTotal = function() {
-		var totalCount = 0
-		for(var i = 0; i < $scope.listCart().length; i++) {
-		totalCount += (($scope.listCart()[i].tea.price * $scope.listCart()[i].total)/100)
-		}
-		return totalCount
-	}
-
-
-	$scope.remove = function(item) {
+$scope.listCart = cart.listCart
+$scope.addCart = cart.addCart
+$scope.list = pages.list
+$scope.add = pages.add
+$scope.allTotal = function() {
+	var totalCount = 0
 	for(var i = 0; i < $scope.listCart().length; i++) {
+	totalCount += (($scope.listCart()[i].tea.price * $scope.listCart()[i].total)/100)
+	}
+	return totalCount
+}
 
-	var cart = $scope.listCart()[i].tea._id
-		if(cart === item){
+$scope.remove = function(item) {
+	for (var i = 0; i < $scope.listCart().length; i++) {
+		var cart = $scope.listCart()[i].tea._id
+	if(cart === item){
 		$scope.listCart().splice(i,1)
 
 		}
 	}		
 }
-
-
-
 
 })
 
